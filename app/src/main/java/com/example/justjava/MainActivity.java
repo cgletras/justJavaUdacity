@@ -34,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         String personName = editTexPersonName.getText().toString();
 
         int price = calculatePrice(quantity, hasChocolate, hasWhippedCream);
-        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, personName));
+        String message = createOrderSummary(price, hasWhippedCream, hasChocolate, personName);
+        displayMessage(message);
+
+        String[] addresses = new String[]{"cgletras@gmail.com"};
+        composeEmail(addresses, "Coffee order", message);
     }
 
     private int calculatePrice(int quantity, boolean hasChocolate, boolean hasCream) {
@@ -58,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
                 "Quantity: " + quantity + "\n" +
                 "Price: $" + price + "\n" +
                 "Thank you!";
+    }
+
+    public void composeEmail(String[] addresses, String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private void displayMessage(String message) {
