@@ -1,15 +1,13 @@
 package com.example.justjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,12 +54,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, String personName) {
-        return "Name: " + personName + "\n" +
-                "Add Whipped Cream? " + addWhippedCream + "\n" +
-                "Add Chocolate? " + addChocolate + "\n" +
-                "Quantity: " + quantity + "\n" +
-                "Price: $" + price + "\n" +
-                "Thank you!";
+        String addWhippedCreamMsg = "";
+        String addChocolateMsg = "";
+
+        if(addChocolate){
+            addChocolateMsg = getString(R.string.topping_msg_true);
+        } else {
+            addChocolateMsg = getString(R.string.topping_msg_false);
+        }
+        if(addWhippedCream){
+            addWhippedCreamMsg = getString(R.string.topping_msg_true);
+        } else {
+            addWhippedCreamMsg = getString(R.string.topping_msg_false);
+        }
+
+        return getString(R.string.name) + personName + "\n" +
+                getString(R.string.whipped_cream) + addWhippedCreamMsg + "\n" +
+                getString(R.string.top_chocolate) + addChocolateMsg + "\n" +
+                getString(R.string.quantity) + quantity + "\n" +
+                getString(R.string.price) + price + "\n" +
+                getString(R.string.thank_you);
     }
 
     public void composeEmail(String[] addresses, String subject, String message) {
