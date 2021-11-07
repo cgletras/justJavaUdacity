@@ -25,11 +25,9 @@
         android:autofillHints="" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/toppings"
-        android:textAllCaps="true" />
+        style="@style/HeaderTextStyle" />
 
     <CheckBox
         android:id="@+id/whipped_cream_checkBox"
@@ -48,11 +46,9 @@
         android:text="@string/top_chocolate" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/quantity"
-        android:textAllCaps="true" />
+        style="@style/HeaderTextStyle" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -82,21 +78,6 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/order_summary"
-        android:textAllCaps="true" />
-
-    <TextView
-        android:id="@+id/order_summary_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="$0"
-        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/bv_order"
